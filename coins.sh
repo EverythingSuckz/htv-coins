@@ -54,7 +54,7 @@ get_coins() {
 main() {
     if [ -s "$session_file" ]; then
         echo "[#] Session file found. The credintials will be ignored."
-        local session_token=$(cat $session_file | openssl enc -d -des3 -base64 -pass pass:$hanime_password -pbkdf2 2>&1 >/dev/null)
+        local session_token="$(cat $session_file | openssl enc -d -des3 -base64 -pass pass:$hanime_password -pbkdf2 2>&1)"
         if [[ $session_token = bad* ]]; then
             echo "[!] Incorrect password for decrypting the session file"
             exit 1
