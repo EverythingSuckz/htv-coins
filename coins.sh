@@ -68,6 +68,7 @@ main() {
                 echo "[!] Unable to make the login to your account, Please try again later."
                 exit 1
             fi
+            local session_token=$(echo $info | jq -r .session_token)
         fi
     else 
         echo "[#] '$session_file' does not exist."
